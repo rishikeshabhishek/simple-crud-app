@@ -29,6 +29,9 @@ const StudentSchema = new Schema({
     fees: {
         type: Number,
         required: true
+    },
+    status: {
+        type: Number
     }
 })
 
