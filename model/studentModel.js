@@ -31,7 +31,8 @@ const StudentSchema = new Schema({
         required: true
     },
     status: {
-        type: Number
+        type: Number, //default
+        default: 1
     }
 })
 

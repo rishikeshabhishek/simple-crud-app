@@ -26,7 +26,6 @@ exports.registerStudent = (req, res) => {
         email: req.body.email,
         course: req.body.course,
         fees: req.body.fees,
-        status: 1
     })
     Student.save().then((result) => {
         console.log(result, "Student Registration Successfull!!!");
@@ -51,7 +50,7 @@ exports.update = (req, res) => {
 }
 
 exports.updateStudent = (req, res) => {
-    StudentModel.findByIdAndUpdate(req.params.id, { firstName: req.body.firstName, lastName: req.body.lastName, address: req.body.address, contact: req.body.contactNumber, email: req.body.email, course: req.body.course, fees: req.body.fees, status: 1 }, (error, data) => {
+    StudentModel.findByIdAndUpdate(req.params.id, { firstName: req.body.firstName, lastName: req.body.lastName, address: req.body.address, contact: req.body.contactNumber, email: req.body.email, course: req.body.course, fees: req.body.fees }, (error, data) => {
         if (!error) {
             console.log("Student Update");
             res.redirect('/');
@@ -60,6 +59,8 @@ exports.updateStudent = (req, res) => {
         }
     });
 }
+
+/* Hard Delete */
 
 // exports.delete = (req, res) => {
 //     StudentModel.findByIdAndRemove(req.params.id, (error, data) => {
@@ -71,6 +72,8 @@ exports.updateStudent = (req, res) => {
 //         }
 //     })
 // }
+
+/* Soft Delete */
 
 exports.delete = (req, res) => {
     StudentModel.findByIdAndUpdate(req.params.id, { status: 0 }, (error, data) => {
